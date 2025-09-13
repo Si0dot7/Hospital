@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 import rules from "./llm_rules.json";
 import { detectRisk, CRISIS_RESOURCES } from "@/lib/safety";
 import { addAlert } from "@/lib/alerts";
@@ -204,10 +205,10 @@ export default function ChatPage() {
                         <div className={`flex flex-col gap-1 items-${msg.sender === "user" ? "end" : "start"}`}>
                             {(msg.text && (!msg.file && !msg.link || msg.sender === "user") && !msg.loading) && (
                                 <div
-                                    className={`rounded-lg px-4 py-2 max-w-xs break-words shadow text-sm ${msg.sender === "user" ? "bg-blue-500 text-white" : "bg-white text-gray-800 border"
-                                        }`}
+                                    className={`rounded-lg px-4 py-2 max-w-xs break-words shadow text-sm ${msg.sender === "user" ? "bg-blue-500 text-white" : "bg-white text-gray-800 border"}`}
                                 >
-                                    {msg.text}
+                                    <RenderTextMarkdown text={msg.text} />
+
                                 </div>
                             )}
 
@@ -225,7 +226,7 @@ export default function ChatPage() {
                                 <div className="max-w-xs bg-white border rounded-lg shadow px-4 py-3">
                                     {msg.text && (
                                         <div className="text-sm text-gray-800 font-medium mb-2">
-                                            {msg.text}
+                                            <RenderTextMarkdown text={msg.text} />
                                         </div>
                                     )}
                                     <div className="flex items-center gap-3">
@@ -255,7 +256,7 @@ export default function ChatPage() {
                                 >
                                     {msg.text && (
                                         <div className="text-sm text-gray-800 font-medium mb-1">
-                                            {msg.text}
+                                            <RenderTextMarkdown text={msg.text} />
                                         </div>
                                     )}
                                     <div className="flex items-center gap-3">
@@ -312,4 +313,23 @@ export default function ChatPage() {
             </form>
         </div>
     );
+}
+
+function RenderTextMarkdown(props: { text: string }) {
+    return (
+        <ReactMarkdown
+            components={{
+                a: ({ node, ...props }) => <a className="underline text-blue-600 break-all" target="_blank" rel="noopener noreferrer" {...props} />,
+                code: ({ node, ...props }) => <code className="bg-gray-100 px-1 rounded text-xs font-mono" {...props} />,
+                strong: ({ node, ...props }) => <strong className="font-bold" {...props} />,
+                em: ({ node, ...props }) => <em className="italic" {...props} />,
+                ul: ({ node, ...props }) => <ul className="list-disc pl-5" {...props} />,
+                ol: ({ node, ...props }) => <ol className="list-decimal pl-5" {...props} />,
+                li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+                blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-blue-300 pl-3 italic text-gray-500" {...props} />,
+            }}
+        >
+            {props.text}
+        </ReactMarkdown>
+    )
 }
