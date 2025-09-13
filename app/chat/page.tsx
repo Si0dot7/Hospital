@@ -177,7 +177,7 @@ function ChatPage() {
             </div>
             {/* Recommended messages header and list */}
             <div className="bg-gray-100 border-t">
-                <div className="px-4 pt-3 pb-1 text-gray-700 font-semibold text-sm">คำถามที่ถามบ่อย</div>
+                <div className="px-4 pt-3 pb-2 text-gray-700 font-semibold text-sm">คำถามที่ถูกถามบ่อย</div>
                 <div className="px-4 pb-2 flex gap-2 overflow-x-auto">
                     {recommendedMessages.map((msg, idx) => (
                         <button
