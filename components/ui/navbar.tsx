@@ -175,55 +175,138 @@ const Navbar: React.FC = () => {
         </nav>
       </aside>
 
-      {/* ===== Popup Preferences (Mock-up) ===== */}
+      {/* ===== Popup Preferences (Mock-up) - Using Inline Styles ===== */}
       {/* Backdrop */}
       <div
         aria-hidden={!prefsOpen}
         onClick={() => setPrefsOpen(false)}
-        className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-300 ${
-          prefsOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 60,
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          transition: 'opacity 0.3s ease',
+          opacity: prefsOpen ? 1 : 0,
+          pointerEvents: prefsOpen ? 'auto' : 'none'
+        }}
       />
+      
       {/* Dialog */}
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="prefs-title"
-        className={`fixed z-[61] top-20 right-4 w-[360px] rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 transition-all
-          ${prefsOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}
+        style={{
+          position: 'fixed',
+          zIndex: 61,
+          top: '80px',
+          right: '16px',
+          width: '360px',
+          borderRadius: '16px',
+          backgroundColor: '#ffffff',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          border: '1px solid rgba(0, 0, 0, 0.05)',
+          transition: 'all 0.3s ease',
+          opacity: prefsOpen ? 1 : 0,
+          transform: prefsOpen ? 'translateY(0)' : 'translateY(-8px)',
+          pointerEvents: prefsOpen ? 'auto' : 'none'
+        }}
       >
-        <div className="p-4">
-          <div className="flex items-start justify-between">
-            <h2 id="prefs-title" className="text-base font-semibold text-slate-800">
+        <div style={{ padding: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <h2 
+              id="prefs-title" 
+              style={{ 
+                fontSize: '16px', 
+                fontWeight: '600', 
+                color: '#1e293b',
+                margin: 0,
+                lineHeight: '24px'
+              }}
+            >
               ตั้งค่าการแสดงผล
             </h2>
             <button
-              className="p-2 -m-2 rounded-md text-slate-500 hover:bg-slate-100"
               onClick={() => setPrefsOpen(false)}
               aria-label="ปิดหน้าต่างตั้งค่า"
+              style={{
+                padding: '8px',
+                margin: '-8px',
+                borderRadius: '6px',
+                border: 'none',
+                backgroundColor: 'transparent',
+                color: '#64748b',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f1f5f9'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <svg style={{ width: '20px', height: '20px' }} viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
 
           {/* ขนาดตัวอักษร */}
-          <div className="mt-4">
-            <div className="text-sm font-medium text-slate-700">ขนาดตัวอักษร</div>
-            <div className="mt-2 flex items-center gap-2">
+          <div style={{ marginTop: '16px' }}>
+            <div style={{ fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+              ขนาดตัวอักษร
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <button
-                className="h-10 w-12 rounded-lg border border-slate-300 hover:bg-slate-50"
                 onClick={() => setFontSize((v) => Math.max(10, v - 1))}
+                style={{
+                  height: '40px',
+                  width: '48px',
+                  borderRadius: '8px',
+                  border: '1px solid #d1d5db',
+                  backgroundColor: '#ffffff',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
               >
                 –
               </button>
-              <div className="h-10 flex-1 grid place-items-center rounded-lg border border-slate-300 text-slate-800">
+              <div style={{
+                height: '40px',
+                flex: '1',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '8px',
+                border: '1px solid #d1d5db',
+                color: '#1f2937',
+                backgroundColor: '#ffffff'
+              }}>
                 {fontSize}
               </div>
               <button
-                className="h-10 w-12 rounded-lg border border-slate-300 hover:bg-slate-50"
                 onClick={() => setFontSize((v) => Math.min(40, v + 1))}
+                style={{
+                  height: '40px',
+                  width: '48px',
+                  borderRadius: '8px',
+                  border: '1px solid #d1d5db',
+                  backgroundColor: '#ffffff',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
               >
                 +
               </button>
@@ -231,21 +314,59 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* ระยะห่างระหว่างบรรทัด */}
-          <div className="mt-4">
-            <div className="text-sm font-medium text-slate-700">ระยะห่างระหว่างบรรทัด</div>
-            <div className="mt-2 flex items-center gap-2">
+          <div style={{ marginTop: '16px' }}>
+            <div style={{ fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+              ระยะห่างระหว่างบรรทัด
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <button
-                className="h-10 w-12 rounded-lg border border-slate-300 hover:bg-slate-50"
                 onClick={() => setLineHeight((v) => Math.max(1, v - 1))}
+                style={{
+                  height: '40px',
+                  width: '48px',
+                  borderRadius: '8px',
+                  border: '1px solid #d1d5db',
+                  backgroundColor: '#ffffff',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
               >
                 –
               </button>
-              <div className="h-10 flex-1 grid place-items-center rounded-lg border border-slate-300 text-slate-800">
+              <div style={{
+                height: '40px',
+                flex: '1',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '8px',
+                border: '1px solid #d1d5db',
+                color: '#1f2937',
+                backgroundColor: '#ffffff'
+              }}>
                 {lineHeight}
               </div>
               <button
-                className="h-10 w-12 rounded-lg border border-slate-300 hover:bg-slate-50"
                 onClick={() => setLineHeight((v) => Math.min(4, v + 1))}
+                style={{
+                  height: '40px',
+                  width: '48px',
+                  borderRadius: '8px',
+                  border: '1px solid #d1d5db',
+                  backgroundColor: '#ffffff',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
               >
                 +
               </button>
@@ -253,72 +374,163 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* สีพื้นหลัง / ธีม */}
-          <div className="mt-5">
-            <div className="text-sm font-medium text-slate-700">สีพื้นหลัง</div>
-            <div className="mt-3 grid grid-cols-3 gap-3">
+          <div style={{ marginTop: '20px' }}>
+            <div style={{ fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '12px' }}>
+              สีพื้นหลัง
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
               <button
                 onClick={() => setTheme('light')}
-                className={`h-14 rounded-xl border flex items-center justify-center gap-2 ${
-                  theme === 'light' ? 'border-blue-600 ring-2 ring-blue-200' : 'border-slate-300'
-                }`}
+                style={{
+                  height: '56px',
+                  borderRadius: '12px',
+                  border: theme === 'light' ? '2px solid #2563eb' : '1px solid #d1d5db',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  backgroundColor: '#ffffff',
+                  boxShadow: theme === 'light' ? '0 0 0 2px rgba(37, 99, 235, 0.2)' : 'none'
+                }}
               >
-                <span className="inline-block rounded-md bg-white border border-slate-300 px-2 py-1">Aa</span>
+                <span style={{
+                  display: 'inline-block',
+                  borderRadius: '6px',
+                  backgroundColor: '#ffffff',
+                  border: '1px solid #d1d5db',
+                  padding: '4px 8px',
+                  fontSize: '14px'
+                }}>
+                  Aa
+                </span>
               </button>
+              
               <button
                 onClick={() => setTheme('sepia')}
-                className={`h-14 rounded-xl border flex items-center justify-center gap-2 ${
-                  theme === 'sepia' ? 'border-blue-600 ring-2 ring-blue-200' : 'border-slate-300'
-                }`}
-                style={{ backgroundColor: '#fbf1e6' }}
+                style={{
+                  height: '56px',
+                  borderRadius: '12px',
+                  border: theme === 'sepia' ? '2px solid #2563eb' : '1px solid #d1d5db',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  backgroundColor: '#fbf1e6',
+                  boxShadow: theme === 'sepia' ? '0 0 0 2px rgba(37, 99, 235, 0.2)' : 'none'
+                }}
               >
-                <span className="inline-block rounded-md bg-[#fbf1e6] border border-slate-300 px-2 py-1">Aa</span>
+                <span style={{
+                  display: 'inline-block',
+                  borderRadius: '6px',
+                  backgroundColor: '#fbf1e6',
+                  border: '1px solid #d1d5db',
+                  padding: '4px 8px',
+                  fontSize: '14px'
+                }}>
+                  Aa
+                </span>
               </button>
+              
               <button
                 onClick={() => setTheme('dark')}
-                className={`h-14 rounded-xl border flex items-center justify-center gap-2 ${
-                  theme === 'dark' ? 'border-blue-600 ring-2 ring-blue-200' : 'border-slate-300'
-                }`}
-                style={{ backgroundColor: '#0a0a0a', color: 'white' }}
+                style={{
+                  height: '56px',
+                  borderRadius: '12px',
+                  border: theme === 'dark' ? '2px solid #2563eb' : '1px solid #d1d5db',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  backgroundColor: '#0a0a0a',
+                  color: '#ffffff',
+                  boxShadow: theme === 'dark' ? '0 0 0 2px rgba(37, 99, 235, 0.2)' : 'none'
+                }}
               >
-                <span className="inline-block rounded-md bg-black text-white px-2 py-1">Aa</span>
+                <span style={{
+                  display: 'inline-block',
+                  borderRadius: '6px',
+                  backgroundColor: '#000000',
+                  color: '#ffffff',
+                  padding: '4px 8px',
+                  fontSize: '14px'
+                }}>
+                  Aa
+                </span>
               </button>
             </div>
           </div>
 
           {/* แบบตัวอักษร */}
-          <div className="mt-5">
-            <div className="text-sm font-medium text-slate-700">แบบตัวอักษร</div>
-            <div className="mt-3 grid grid-cols-2 gap-3">
+          <div style={{ marginTop: '20px' }}>
+            <div style={{ fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '12px' }}>
+              แบบตัวอักษร
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
               <button
                 onClick={() => setFontStyle('1')}
-                className={`rounded-xl border px-4 py-3 text-sm ${
-                  fontStyle === '1' ? 'border-blue-600 ring-2 ring-blue-200' : 'border-slate-300'
-                }`}
+                style={{
+                  borderRadius: '12px',
+                  border: fontStyle === '1' ? '2px solid #2563eb' : '1px solid #d1d5db',
+                  padding: '12px 16px',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  backgroundColor: '#ffffff',
+                  boxShadow: fontStyle === '1' ? '0 0 0 2px rgba(37, 99, 235, 0.2)' : 'none'
+                }}
               >
                 แบบที่ 1
               </button>
               <button
                 onClick={() => setFontStyle('2')}
-                className={`rounded-xl border px-4 py-3 text-sm ${
-                  fontStyle === '2' ? 'border-blue-600 ring-2 ring-blue-200' : 'border-slate-300'
-                }`}
+                style={{
+                  borderRadius: '12px',
+                  border: fontStyle === '2' ? '2px solid #2563eb' : '1px solid #d1d5db',
+                  padding: '12px 16px',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  backgroundColor: '#ffffff',
+                  boxShadow: fontStyle === '2' ? '0 0 0 2px rgba(37, 99, 235, 0.2)' : 'none'
+                }}
               >
                 แบบที่ 2
               </button>
             </div>
           </div>
 
-          {/* ปุ่มยืนยัน (ไม่ทำอะไร แค่ mock) */}
-          <div className="mt-6 flex justify-end gap-2">
+          {/* ปุ่มยืนยัน */}
+          <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
             <button
-              className="px-4 py-2 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700"
               onClick={() => setPrefsOpen(false)}
+              style={{
+                padding: '8px 16px',
+                borderRadius: '8px',
+                border: '1px solid #d1d5db',
+                backgroundColor: '#ffffff',
+                color: '#374151',
+                cursor: 'pointer',
+                fontSize: '14px'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f9fafb'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
             >
               ยกเลิก
             </button>
             <button
-              className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
               onClick={() => setPrefsOpen(false)}
+              style={{
+                padding: '8px 16px',
+                borderRadius: '8px',
+                border: 'none',
+                backgroundColor: '#2563eb',
+                color: '#ffffff',
+                cursor: 'pointer',
+                fontSize: '14px'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#1d4ed8'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
             >
               ใช้การตั้งค่า
             </button>
