@@ -1,7 +1,7 @@
 import * as React from 'react';
 import services from './services.json';
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, React.JSX.Element> = {
     stethoscope: (
         <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="mx-auto"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 3v6a6 6 0 0012 0V3m-6 12v3m0 0a3 3 0 006 0v-3" /></svg>
     ),

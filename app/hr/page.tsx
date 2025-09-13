@@ -1,5 +1,8 @@
+// app/hr/page.tsx
 "use client";
+
 import { useMemo, useState } from "react";
+import AuthGate from "@/components/auth/page";
 import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from "recharts";
 import HrTable from "@/components/hr/HrTable";
 import HrActions from "@/components/hr/HrActions";
@@ -8,6 +11,14 @@ import { initialRequests, trendData } from "@/lib/mockdata";
 import { Button } from "@/components/ui/button";
 
 export default function HRPage() {
+  return (
+    <AuthGate allow={["hr"]} /* ใส่ fallback เองถ้าต้องการ redirect */>
+      <HRInner />
+    </AuthGate>
+  );
+}
+
+function HRInner() {
   const [rows, setRows] = useState<RequestRow[]>(initialRequests);
   const [active, setActive] = useState<RequestRow | null>(null);
   const [filter, setFilter] = useState<string>("ทั้งหมด");
@@ -45,9 +56,7 @@ export default function HRPage() {
       <div className="card p-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">ปริมาณคำร้องรายวัน</h2>
-          <Button variant="outline" onClick={() => history.back()}>
-            ← กลับ
-          </Button>
+          <Button variant="outline" onClick={() => history.back()}>← กลับ</Button>
         </div>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">
