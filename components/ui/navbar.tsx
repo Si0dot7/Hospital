@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 const NAV_ITEMS = [
   { name: 'Home', href: '/' },
-  { name: 'ระบบ', href: '/system' },
+  { name: 'ระบบ', href: '/services' },
   { name: 'Chat', href: '/chat' },
   { name: 'Setting', href: '/setting' },
   { name: 'Logout', href: '/logout', isLogout: true }, // ⬅️ เพิ่ม Logout ต่อท้าย
