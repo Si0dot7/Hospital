@@ -38,6 +38,9 @@ export default function EmployeeFormPage() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
+      <title>
+        คำร้องใหม่
+      </title>
       <Card><CardContent className="p-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">ฟอร์มคำร้องใหม่</h2>

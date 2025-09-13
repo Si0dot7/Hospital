@@ -194,6 +194,9 @@ export default function ChatPage() {
 
     return (
         <div className="flex flex-col h-full">
+            <title>
+                ผู้ช่วย HR คุณจุ๋ม
+            </title>
             {/* Chat bubbles */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
                 {messages.map((msg) => (

@@ -1,5 +1,10 @@
 import * as React from 'react';
 import services from './services.json';
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'บริการออนไลน์',
+}
 
 const iconMap: Record<string, React.JSX.Element> = {
     stethoscope: (
@@ -47,7 +52,7 @@ function isSvgString(str: string) {
 function ServicesPage() {
     return (
         <div className="min-h-screen bg-gray-50 py-8 px-4">
-            <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">ระบบ Online</h1>
+            <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">บริการออนไลน์</h1>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
                 {services.map((service, idx) => (
                     <a

@@ -13,6 +13,9 @@ export default function TrackingPage({
 
   return (
     <div className="max-w-5xl mx-auto p-6 grid gap-4 md:grid-cols-3">
+      <title>
+        ติดตามสถานะคำร้อง
+      </title>
       <Card className="md:col-span-2">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">

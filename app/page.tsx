@@ -198,6 +198,9 @@ export default function HRPosterPage() {
 
   return (
     <main className="container">
+      <title>
+        หน้าหลัก
+      </title>
       {/* ===== HERO ===== */}
       <section className="hero">
         <div className="hero-content">

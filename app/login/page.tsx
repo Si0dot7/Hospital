@@ -52,7 +52,7 @@ export default function LoginPage() {
 
       if (!res.ok) {
         let msg = 'เข้าสู่ระบบไม่สำเร็จ';
-        try { msg = (await res.json())?.error || msg; } catch {}
+        try { msg = (await res.json())?.error || msg; } catch { }
         setErr(msg);
         return;
       }
@@ -67,7 +67,7 @@ export default function LoginPage() {
 
       // ใช้ startTransition ให้เนียน และรับประกันเป็น path ภายใน
       startTransition(() => {
-        router.replace(safeFrom || '/');
+        router.replace(safeFrom || '/main');
         // กันกรณี middleware ยังรีเฟรชไม่ทัน: refresh หน้านั้น
         router.refresh();
       });

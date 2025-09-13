@@ -14,13 +14,13 @@ type NavItem = {
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { name: 'Home', href: '/' },
+  { name: 'หน้าหลัก', href: '/main' },
   { name: 'บริการ', href: '/services' },
-  { name: 'Chat', href: '/chat' },
-  { name: 'Employee', href: '/employee', userOnly: true },
-  { name: 'HR', href: '/hr', hrOnly: true },
+  { name: 'แชท', href: '/chat' },
+  { name: 'คำร้องใหม่', href: '/employee', userOnly: true },
+  { name: 'จัดการคำร้อง', href: '/hr', hrOnly: true },
   { name: 'HR Alerts', href: '/hr/alert', hrOnly: true },
-  { name: 'Setting', href: '/setting' },
+  { name: 'การตั้งค่า', href: '/setting' },
   // Login/Logout จะเติมแบบไดนามิกด้านล่างตาม role
 ];
 
@@ -68,9 +68,9 @@ const Navbar: React.FC = () => {
     // ต่อท้าย Login/Logout ตาม role
     if (!loading) {
       if (role === 'guest') {
-        items = [...items, { name: 'Login', href: '/login' }];
+        items = [...items, { name: 'เข้าสู่ระบบ', href: '/login' }];
       } else {
-        items = [...items, { name: 'Logout', href: '/logout', isLogout: true }];
+        items = [...items, { name: 'ออกจากระบบ', href: '/logout', isLogout: true }];
       }
     }
     return items;
