@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useState, FormEvent, useTransition } from 'react';
+import { useState, FormEvent, useTransition, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import type { Route } from 'next';
@@ -23,8 +23,8 @@ function useSafeFrom() {
   }, [fromRaw]);
 }
 
-function toInternalRoute(path?: string | null): Route {
-  return typeof path === 'string' && path.startsWith('/') ? (path as Route) : ('/' as Route);
+function toInternalRoute(path: string): Route {
+  return path && path.startsWith('/') ? (path as Route) : ('/' as Route);
 }
 
 export default function LoginPage() {
@@ -37,6 +37,10 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    document.title = 'เข้าสู่ระบบ';
+  }, []);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -51,7 +55,9 @@ export default function LoginPage() {
 
       if (!res.ok) {
         let msg = 'เข้าสู่ระบบไม่สำเร็จ';
-        try { msg = (await res.json())?.error || msg; } catch {}
+        try {
+          msg = (await res.json())?.error || msg;
+        } catch {}
         setErr(msg);
         return;
       }
@@ -64,7 +70,7 @@ export default function LoginPage() {
 
       setRole(j.role);
 
-      // ✅ แปลงเป็น Route ก่อนเรียก replace()
+      // ✅ ให้ router.replace ได้ชนิด Route
       const dest = toInternalRoute(safeFrom);
       startTransition(() => {
         router.replace(dest);
@@ -79,7 +85,6 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <title>เข้าสู่ระบบ</title>
       <div className="w-full max-w-sm bg-white rounded-xl shadow p-6">
         <h1 className="text-xl font-semibold text-center mb-6">เข้าสู่ระบบ</h1>
         <form onSubmit={onSubmit} className="space-y-3">
@@ -106,7 +111,11 @@ export default function LoginPage() {
             />
           </div>
 
-          {err && <div className="text-red-600 text-sm" role="alert">{err}</div>}
+          {err && (
+            <div className="text-red-600 text-sm" role="alert">
+              {err}
+            </div>
+          )}
 
           <button
             type="submit"
