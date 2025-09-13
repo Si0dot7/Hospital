@@ -14,12 +14,119 @@
         "type": "mcp"
     },
     {
+        "question": "สรุปข้อมูลการลา",
+        "answer": "คุณสมชายเหลือวันลาทั้งหมด 25 วันค่ะ คิดเป็นลากิจส่วนตัว 5 วัน ลาป่วย 15 วัน และลาพักผ่อน 5 วันค่ะ",
+        "type": "mcp"
+    },
+    {
+        "question": "เงินเดือนของฉัน",
+        "answer": "คุณสมชายมียอดเงินได้สุทธิจากคณะแพทย์ฯ 56,789 บาทค่ะ",
+        "type": "mcp"
+    },
+    {
+        "question": "สรุปเงินเดือน",
+        "answer": "คุณสมชายมียอดเงินได้สุทธิจากคณะแพทย์ฯ 56,789 บาทค่ะ",
+        "type": "mcp"
+    },
+    {
+        "question": "รายละเอียดเงินเดือน",
+        "answer": "คุณสมชายสามารถขอรายละเอียดเงินเดือนได้ผ่านระบบ Si-eHR เลยค่ะ",
+        "type": "link",
+        "link": {
+            "label": "ไปที่ Si-eHR",
+            "url": "https://sivwork.ekoapp.com/login"
+        }
+    },
+    {
+        "question": "ส่วนลด admit",
+        "answer": "ปัจจุบัน คุณสมชายได้รับการลดหย่อนค่ารักษาพยาบาล 70% ตามสิทธิ์ของพนักงานมหาวิทยาลัย อายุงาน 20 ปี 2 เดือนค่ะ",
+        "type": "mcp"
+    },
+    {
+        "question": "รายละเอียดส่วนลด admit",
+        "answer": "คุณสมชายสามารถขอรายละเอียดการลดหย่อนค่ารักษาพยาบาลได้ผ่านระบบ Si-eHR เลยค่ะ",
+        "type": "link",
+        "link": {
+            "label": "ไปที่ Si-eHR",
+            "url": "https://sivwork.ekoapp.com/login"
+        }
+    },
+    {
+        "question": "วัคซีนล่าสุด",
+        "answer": "คุณสมชายฉีดวัคซีนล่าสุดไปเมื่อวันที่ 30/03/2565 เป็น Influenza Vaccine ค่ะ",
+        "type": "mcp"
+    },
+    {
+        "question": "ฉีดวัคซีนล่าสุด",
+        "answer": "คุณสมชายฉีดวัคซีนล่าสุดไปเมื่อวันที่ 30/03/2565 เป็น Influenza Vaccine ค่ะ",
+        "type": "mcp"
+    },
+    {
+        "question": "ประวัติการฉีดวัคซีนล่าสุด",
+        "answer": "คุณสมชายฉีดวัคซีนล่าสุดไปเมื่อวันที่ 30/03/2565 เป็น Influenza Vaccine ค่ะ",
+        "type": "mcp"
+    },
+    {
+        "question": "ประวัติการฉีดวัคซีน",
+        "answer": "คุณสมชายสามารถขอรายละเอียดการฉีดวัคซีนที่ผ่านมา ได้ผ่านระบบ Si-eHR เลยค่ะ",
+        "type": "link",
+        "link": {
+            "label": "ไปที่ Si-eHR",
+            "url": "https://sivwork.ekoapp.com/login"
+        }
+    },
+    {
+        "question": "จองฉีดวัคซีน",
+        "answer": "คุณสมชายสามารถจองคิวฉีดวัคซีนได้ผ่านระบบ Si-eHR เลยค่ะ",
+        "type": "link",
+        "link": {
+            "label": "ไปที่ Si-eHR",
+            "url": "https://sivwork.ekoapp.com/login"
+        }
+    },
+    {
         "question": "ขอลิงก์ส่งเอกสาร",
         "answer": "นี่คือลิงก์สำหรับยื่นเอกสารที่เกี่ยวข้องค่ะ",
         "type": "link",
         "link": {
             "label": "ไปที่หน้าคำร้องใหม่",
             "url": "/employee"
+        }
+    },
+    {
+        "question": "แก้ไขข้อมูล",
+        "answer": "สำหรับการแก้ไขข้อมูลส่วนตัว สามารถแก้ไขได้ผ่านระบบ SivWork บนคอมพิวเตอร์ค่ะ",
+        "type": "link",
+        "link": {
+            "label": "ไปที่ SivWork",
+            "url": "https://sivwork.ekoapp.com/login"
+        }
+    },
+    {
+        "question": "แก้ไขข้อมูลส่วนตัว",
+        "answer": "สำหรับการแก้ไขข้อมูลส่วนตัว สามารถแก้ไขได้ผ่านระบบ SivWork บนคอมพิวเตอร์ค่ะ",
+        "type": "link",
+        "link": {
+            "label": "ไปที่ SivWork",
+            "url": "https://sivwork.ekoapp.com/login"
+        }
+    },
+    {
+        "question": "ข้อมูลส่วนตัว",
+        "answer": "คุณสมชายสามารถดูข้อมูลส่วนตัวของตนเองผ่านระบบ SivWork ได้ค่ะ",
+        "type": "link",
+        "link": {
+            "label": "ไปที่ SivWork",
+            "url": "https://sivwork.ekoapp.com/login"
+        }
+    },
+    {
+        "question": "ขอเอกสารรับรองการทำงาน",
+        "answer": "คุณสมชายสามารถขอเอกสารรับรองการทำงานได้ผ่านระบบ Si-eHR ได้เลยค่ะ",
+        "type": "link",
+        "link": {
+            "label": "ไปที่ Si-eHR",
+            "url": "https://sivwork.ekoapp.com/login"
         }
     },
     {
