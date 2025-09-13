@@ -11,7 +11,7 @@ function ChatLayout({ children }: { children: React.ReactNode }) {
                 <div className="flex items-center gap-2">
                     {/* Back button */}
                     <button
-                        onClick={() => router.push('/')}
+                        onClick={() => router.back()}
                         className="mr-2 p-2 rounded hover:bg-gray-200 focus:outline-none"
                         aria-label="Back to Home"
                     >

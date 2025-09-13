@@ -16,5 +16,10 @@ export default function LogoutPage() {
     })();
   }, [router, setRole]);
 
-  return <div className="p-6">กำลังออกจากระบบ…</div>;
+  return <>
+    <title>
+      ออกจากระบบ
+    </title>
+    <div className="p-6">กำลังออกจากระบบ…</div>
+  </>;
 }

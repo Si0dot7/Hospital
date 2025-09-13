@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'สำหรับข้าราชการบำนาญ',
+}
+
 export default function RetiredPage() {
   return (
     <div className="p-6 max-w-5xl mx-auto">

@@ -10,6 +10,9 @@ export default function EmployeePage() {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
+      <title>
+        คำร้องใหม่
+      </title>
       <h2 className="text-2xl font-bold mb-4">👩‍💼 พนักงานทั่วไป</h2>
 
       <div className="grid gap-4 md:grid-cols-3">

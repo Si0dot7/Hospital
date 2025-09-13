@@ -57,6 +57,10 @@ function HRInner() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6 min-h-[calc(100vh-4rem)] space-y-6">
+      <title>
+        จัดการคำร้อง
+      </title>
+
       {/* KPI */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="card p-4">
