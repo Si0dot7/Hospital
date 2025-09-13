@@ -1,21 +1,22 @@
+// app/employee/tracking/page.tsx
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
-// ✅ App Router จะส่ง searchParams มาเป็น props
-export default function TrackingPage({
-  searchParams,
-}: {
-  searchParams: { id?: string };
-}) {
-  const id = searchParams.id ?? "(ใส่เลขที่คำร้อง)";
+export default function TrackingPage() {
+  const sp = useSearchParams();
+  const id = sp.get("id") ?? "(ใส่เลขที่คำร้อง)";
+
+  // ตั้ง title แบบ client (เพราะหน้านี้เป็น client component)
+  useEffect(() => {
+    document.title = "ติดตามสถานะคำร้อง";
+  }, []);
 
   return (
     <div className="max-w-5xl mx-auto p-6 grid gap-4 md:grid-cols-3">
-      <title>
-        ติดตามสถานะคำร้อง
-      </title>
       <Card className="md:col-span-2">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">
@@ -27,40 +28,24 @@ export default function TrackingPage({
 
           <ol className="relative border-s-2 border-dashed ps-6">
             <li className="mb-6">
-              <span className="absolute -start-3 bg-white rounded-full p-1 border">
-                1
-              </span>
+              <span className="absolute -start-3 bg-white rounded-full p-1 border">1</span>
               <p className="font-medium">ยื่นคำร้องแล้ว</p>
-              <p className="text-gray-500 text-sm">
-                ระบบรับคำร้องและออกเลขที่อัตโนมัติ
-              </p>
+              <p className="text-gray-500 text-sm">ระบบรับคำร้องและออกเลขที่อัตโนมัติ</p>
             </li>
             <li className="mb-6">
-              <span className="absolute -start-3 bg-white rounded-full p-1 border">
-                2
-              </span>
+              <span className="absolute -start-3 bg-white rounded-full p-1 border">2</span>
               <p className="font-medium">HR กำลังตรวจสอบ</p>
-              <p className="text-gray-500 text-sm">
-                ใช้เวลาประมาณ 1–2 วันทำการ
-              </p>
+              <p className="text-gray-500 text-sm">ใช้เวลาประมาณ 1–2 วันทำการ</p>
             </li>
             <li className="mb-6">
-              <span className="absolute -start-3 bg-white rounded-full p-1 border">
-                3
-              </span>
+              <span className="absolute -start-3 bg-white rounded-full p-1 border">3</span>
               <p className="font-medium">ขอเอกสารเพิ่มเติม (ถ้ามี)</p>
-              <p className="text-gray-500 text-sm">
-                อัปโหลดไฟล์กลับในหน้านี้ได้ทันที
-              </p>
+              <p className="text-gray-500 text-sm">อัปโหลดไฟล์กลับในหน้านี้ได้ทันที</p>
             </li>
             <li>
-              <span className="absolute -start-3 bg-white rounded-full p-1 border">
-                4
-              </span>
+              <span className="absolute -start-3 bg-white rounded-full p-1 border">4</span>
               <p className="font-medium">เสร็จสิ้น</p>
-              <p className="text-gray-500 text-sm">
-                ดาวน์โหลดเอกสารฉบับสมบูรณ์ได้
-              </p>
+              <p className="text-gray-500 text-sm">ดาวน์โหลดเอกสารฉบับสมบูรณ์ได้</p>
             </li>
           </ol>
 
