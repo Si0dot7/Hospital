@@ -117,11 +117,13 @@ const Navbar: React.FC = () => {
 
           {/* ขวา: Search, Aa, Bell */}
           <div className="flex items-center gap-4">
-            <button className="p-2 rounded-md hover:bg-white/10">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
-              </svg>
-            </button>
+            <Link href={'/search'}>
+              <button className="p-2 rounded-md hover:bg-white/10">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
+                </svg>
+              </button>
+            </Link>
 
             {/* Aa => เปิด Popup Preferences */}
             <button

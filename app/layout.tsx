@@ -8,7 +8,7 @@ import Navbar from '@/components/ui/navbar';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const hideNavbar = pathname === '/chat';
+  const hideNavbar = ['/chat', '/search'].includes(pathname)
 
   return (
     <html lang="th">

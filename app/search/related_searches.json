@@ -1,0 +1,22 @@
+[
+    {
+        "label": "บริการออนไลน์",
+        "href": "/services"
+    },
+    {
+        "label": "ระบบแจ้งเงินเดือน",
+        "href": "https://www.si.mahidol.ac.th/e-py/SI/index.asp"
+    },
+    {
+        "label": "ส่งคำร้องใหม่",
+        "href": "/employee"
+    },
+    {
+        "label": "ระบบคำนวณเงินชดเชย",
+        "href": "https://www4.si.mahidol.ac.th/th/division/hr/ccal/"
+    },
+    {
+        "label": "ติดตามสถานะคำร้อง",
+        "href": "/employee"
+    }
+]
