@@ -25,7 +25,7 @@ export const initialRequests: RequestRow[] = [
     title: "ต่อใบอนุญาตประกอบวิชาชีพ",
     attachments: [
       { id: "b1", name: "license_copy.pdf", url: "/samples/license_copy.pdf", mime: "application/pdf", size: 800_000 },
-      { id: "b2", name: "payment_slip.png", url: "/samples/payment_slip.png", mime: "image/png", size: 300_000 },
+      { id: "b2", name: "payment_slip.pdf", url: "/samples/payment_slip.pdf", mime: "application/pdf", size: 300_000 },
     ],
   },
   {
@@ -37,7 +37,7 @@ export const initialRequests: RequestRow[] = [
     status: "เสร็จสิ้น",
     title: "ขอหนังสือรับรองการทำงาน",
     attachments: [
-      { id: "c1", name: "national_id.jpg", url: "/samples/national_id.jpg", mime: "image/jpeg", size: 500_000 },
+      { id: "c1", name: "national_id.pdf", url: "/samples/national_id.pdf", mime: "application/pdf", size: 500_000 },
     ],
   },
 ];
