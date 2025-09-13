@@ -1,0 +1,68 @@
+# ---- Node / Package managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json.*   # อนุญาตให้ commit package-lock.json ปกติ
+
+# ---- Next.js
+.next/
+out/
+.next-static/
+.vercel/
+# ถ้าใช้ Turborepo
+.turbo/
+
+# ---- Build outputs
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# ---- Env & secrets
+.env
+.env.*        # เช่น .env.local, .env.development
+!.env.example # commit ไฟล์ตัวอย่างคีย์
+
+# ---- App uploads / runtime files (เก็บจริงบน S3/DB ในโปรดักชัน)
+public/uploads/
+uploads/
+tmp/
+*.tmp
+
+# ---- OS junk
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ---- Editors & tools
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- Images/cache (ทั่วไป)
+*.log
+logs/
+*.pid
+*.seed
+*.log.*
+
+# ---- Prisma / SQLite (ถ้าใช้)
+prisma/dev.db
+prisma/dev.db-journal
+*.sqlite
+*.sqlite-journal
+
+# ---- Storybook (ถ้าใช้)
+storybook-static/
+
+# ---- Playwright / Cypress (ถ้าใช้)
+test-results/
+playwright-report/
+cypress/videos/
+cypress/screenshots/
