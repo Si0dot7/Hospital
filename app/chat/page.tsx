@@ -8,6 +8,7 @@ interface Message {
     text: string;
     file?: { name: string; url: string };
     loading?: boolean;
+    link?: { label: string; url: string };
 }
 
 const initialMessages: Message[] = [
@@ -52,11 +53,13 @@ function ChatPage() {
         let llmResponse = '';
         let file: { name: string; url: string } | undefined = undefined;
         let type: string | undefined = undefined;
-        const foundRule = (rules as Array<{ question: string; answer: string; file?: { name: string; url: string }; type?: string }>).find(r => r.question === text);
+        let link: { label: string; url: string } | undefined = undefined;
+        const foundRule = (rules as Array<{ question: string; answer: string; file?: { name: string; url: string }; type?: string; link?: { label: string; url: string } }>).find(r => r.question === text);
         if (foundRule) {
             llmResponse = foundRule.answer;
             file = foundRule.file;
             type = foundRule.type;
+            link = foundRule.link;
         } else {
             llmResponse = `ขออภัย จุ๋มยังไม่เข้าใจคำถามนี้ค่ะ`;
         }
@@ -84,6 +87,46 @@ function ChatPage() {
                         return [...filtered, answerMsg];
                     });
                 }, 1200);
+            }, 800);
+        } else if (type === 'link' && link) {
+            setTimeout(() => {
+                setMessages((msgs) => {
+                    // Add the normal answer bubble
+                    const answerMsg: Message = {
+                        id: getNextId(msgs),
+                        sender: 'llm',
+                        text: llmResponse,
+                    };
+                    let newMsgs = [...msgs, answerMsg];
+                    // Add the link bubble with the page title as clickable text
+                    const linkMsg: Message = {
+                        id: getNextId(newMsgs),
+                        sender: 'llm',
+                        text: '',
+                        link,
+                    };
+                    return [...newMsgs, linkMsg];
+                });
+            }, 800);
+        } else if (type === 'sos') {
+            setTimeout(() => {
+                setMessages((msgs) => {
+                    // Add the normal answer bubble
+                    const answerMsg: Message = {
+                        id: getNextId(msgs),
+                        sender: 'llm',
+                        text: llmResponse,
+                    };
+                    let newMsgs = [...msgs, answerMsg];
+                    // Add the SOS link bubble
+                    const linkMsg: Message = {
+                        id: getNextId(newMsgs),
+                        sender: 'llm',
+                        text: '',
+                        link: { label: 'จองเวลาติดต่อเจ้าหน้าที่', url: '/hr' },
+                    };
+                    return [...newMsgs, linkMsg];
+                });
             }, 800);
         } else {
             setTimeout(() => {
@@ -132,7 +175,7 @@ function ChatPage() {
                     >
                         <div className={`flex flex-col gap-1 items-${msg.sender === 'user' ? 'end' : 'start'}`}>
                             {/* Normal message bubble */}
-                            {msg.text && (!msg.file || msg.sender === 'user') && !msg.loading && (
+                            {msg.text && (!msg.file && !msg.link || msg.sender === 'user') && !msg.loading && (
                                 <div
                                     className={`rounded-lg px-4 py-2 max-w-xs break-words shadow text-sm ${msg.sender === 'user'
                                         ? 'bg-blue-500 text-white'
@@ -169,6 +212,20 @@ function ChatPage() {
                                         ดาวน์โหลด
                                     </a>
                                 </div>
+                            )}
+                            {/* Link bubble (for LLM, link or sos) */}
+                            {msg.link && msg.sender === 'llm' && (
+                                <a
+                                    href={msg.link.url}
+                                    className="flex items-center max-w-xs bg-white border rounded-lg shadow px-4 py-2 gap-3 hover:bg-blue-50 transition"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span className="text-2xl">🔗</span>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="font-medium text-blue-700 text-sm truncate underline">{msg.link.label}</div>
+                                    </div>
+                                </a>
                             )}
                         </div>
                     </div>
