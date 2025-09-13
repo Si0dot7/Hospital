@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export default function HRPosterPage() {
@@ -329,18 +330,20 @@ export default function HRPosterPage() {
       </section>
 
       {/* ===== Chatbot FAB / Popup ===== */}
-      <div
-        className="chatbot-fab"
-        id="chatbotFab"
-        role="button"
-        aria-label="คุณจุ๋ม ผู้ช่วย HR"
-        onClick={() => setChatOpen((v) => !v)}
-        title="คุณจุ๋ม ผู้ช่วย HR"
-      >
-        🤖
-      </div>
+      <Link href='/chat'>
+        <div
+          className="chatbot-fab"
+          id="chatbotFab"
+          role="button"
+          aria-label="คุณจุ๋ม ผู้ช่วย HR"
+          // onClick={() => setChatOpen((v) => !v)}
+          title="คุณจุ๋ม ผู้ช่วย HR"
+        >
+          🤖
+        </div>
+      </Link>
 
-      <div className="chatbot-popup" id="chatbotPopup" style={{ display: chatOpen ? 'flex' : 'none' }}>
+      {/* <div className="chatbot-popup" id="chatbotPopup" style={{ display: chatOpen ? 'flex' : 'none' }}>
         <div className="chatbot-header">
           <span>คุณจุ๋ม – ผู้ช่วย HR</span>
           <button onClick={() => setChatOpen(false)}>✕</button>
@@ -355,7 +358,7 @@ export default function HRPosterPage() {
           <input type="text" placeholder="พิมพ์คำถาม..." />
           <button>ส่ง</button>
         </div>
-      </div>
+      </div> */}
 
       {/* ===== Styles (from your CSS, slightly tidied) ===== */}
       <style jsx global>{`
