@@ -1,11 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { useState, FormEvent, useTransition, useEffect } from 'react';
+import { useState, FormEvent, useTransition, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import type { Route } from 'next';
 
+function toInternalRoute(path: string): Route {
+  return path && path.startsWith('/') ? (path as Route) : ('/' as Route);
+}
+
+// ใช้ useSearchParams แค่ภายในคอมโพเนนต์ที่อยู่ใน <Suspense>
 function useSafeFrom() {
   const raw = useSearchParams();
   const fromRaw = React.useMemo(() => raw.get('from') || '/', [raw]);
@@ -23,14 +28,19 @@ function useSafeFrom() {
   }, [fromRaw]);
 }
 
-function toInternalRoute(path: string): Route {
-  return path && path.startsWith('/') ? (path as Route) : ('/' as Route);
+export default function LoginPage() {
+  // ⛑️ ครอบด้วย Suspense เพื่อ CSR bailout สำหรับ useSearchParams
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">กำลังโหลด…</div>}>
+      <LoginInner />
+    </Suspense>
+  );
 }
 
-export default function LoginPage() {
+function LoginInner() {
   const router = useRouter();
-  const safeFrom = useSafeFrom();
   const { setRole } = useAuth();
+  const safeFrom = useSafeFrom();
   const [isPending, startTransition] = useTransition();
 
   const [username, setUsername] = useState('');
@@ -55,9 +65,7 @@ export default function LoginPage() {
 
       if (!res.ok) {
         let msg = 'เข้าสู่ระบบไม่สำเร็จ';
-        try {
-          msg = (await res.json())?.error || msg;
-        } catch {}
+        try { msg = (await res.json())?.error || msg; } catch {}
         setErr(msg);
         return;
       }
@@ -70,7 +78,6 @@ export default function LoginPage() {
 
       setRole(j.role);
 
-      // ✅ ให้ router.replace ได้ชนิด Route
       const dest = toInternalRoute(safeFrom);
       startTransition(() => {
         router.replace(dest);
@@ -111,11 +118,7 @@ export default function LoginPage() {
             />
           </div>
 
-          {err && (
-            <div className="text-red-600 text-sm" role="alert">
-              {err}
-            </div>
-          )}
+          {err && <div className="text-red-600 text-sm" role="alert">{err}</div>}
 
           <button
             type="submit"

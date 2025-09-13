@@ -1,18 +1,26 @@
 // app/employee/tracking/page.tsx
-"use client";
+'use client';
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import React, { Suspense, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 export default function TrackingPage() {
-  const sp = useSearchParams();
-  const id = sp.get("id") ?? "(ใส่เลขที่คำร้อง)";
+  // ✅ ครอบด้วย Suspense (ตามข้อกำหนด Next 15)
+  return (
+    <Suspense fallback={<div className="p-6">กำลังโหลด…</div>}>
+      <TrackingInner />
+    </Suspense>
+  );
+}
 
-  // ตั้ง title แบบ client (เพราะหน้านี้เป็น client component)
+function TrackingInner() {
+  const sp = useSearchParams();
+  const id = sp.get('id') ?? '(ใส่เลขที่คำร้อง)';
+
   useEffect(() => {
-    document.title = "ติดตามสถานะคำร้อง";
+    document.title = 'ติดตามสถานะคำร้อง';
   }, []);
 
   return (
