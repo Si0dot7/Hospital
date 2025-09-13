@@ -1,16 +1,20 @@
-"use client";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 export default function LogoutPage() {
-  const { logout } = useAuth();
   const router = useRouter();
+  const { setRole } = useAuth();
 
   useEffect(() => {
-    logout();
-    router.replace("/login");
-  }, [logout, router]);
+    (async () => {
+      await fetch('/api/logout', { method: 'POST' });
+      setRole('guest');
+      router.replace('/login');
+    })();
+  }, [router, setRole]);
 
   return <div className="p-6">กำลังออกจากระบบ…</div>;
 }

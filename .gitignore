@@ -13,6 +13,7 @@ out/
 .vercel/
 # ถ้าใช้ Turborepo
 .turbo/
+package-lock.json
 
 # ---- Build outputs
 dist/

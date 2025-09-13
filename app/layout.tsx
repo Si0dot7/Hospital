@@ -1,16 +1,21 @@
-// app/layout.tsx
-import '../styles/globals.css'; // หรือ '../styles/globals.css' ถ้าคุณเก็บไฟล์ไว้ที่เดิมจริงๆ
+'use client';
+
+import '@/styles/globals.css';
 import type { ReactNode } from 'react';
-import Navbar from '@/components/ui/navbar';
+import { usePathname } from 'next/navigation';
 import AppProviders from '@/components/providers/AppProviders';
+import Navbar from '@/components/ui/navbar';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const hideNavbar = pathname === '/chat';
+
   return (
     <html lang="th">
       <body className="bg-gray-50 text-gray-900">
         <AppProviders>
-          <Navbar />
-          <main className="min-h-screen transition-all duration-300 pt-16">
+          {!hideNavbar && <Navbar />}
+          <main className={`min-h-screen transition-all duration-300 ${hideNavbar ? '' : 'pt-16'}`}>
             <div className="p-6">{children}</div>
           </main>
         </AppProviders>

@@ -1,44 +1,26 @@
-"use client";
-import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
-import type { Role } from "@/lib/auth";
-import { getStoredRole, setStoredRole, clearStoredRole, loginWithPassword } from "@/lib/auth";
+'use client';
 
-type AuthContextValue = {
-  role: Role;
-  loading: boolean;
-  login: (id: string, password: string) => Promise<void>;
-  logout: () => void;
-  setRole: (r: Role) => void; // สำหรับเดโม/ทดสอบ
-};
+import { createContext, useContext, useEffect, useState } from 'react';
 
-const AuthContext = createContext<AuthContextValue | null>(null);
+type Role = 'guest' | 'user' | 'hr';
+type Ctx = { role: Role; setRole: (r: Role) => void; loading: boolean };
+
+const AuthContext = createContext<Ctx | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [role, setRoleState] = useState<Role>("guest");
+  const [role, setRole] = useState<Role>('guest');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setRoleState(getStoredRole());
+    // อ่านจาก cookie: role
+    const m = document.cookie.match(/(?:^|; )role=([^;]+)/);
+    const r = m ? (decodeURIComponent(m[1]) as Role) : 'guest';
+    setRole(r);
     setLoading(false);
   }, []);
 
-  const setRole = useCallback((r: Role) => {
-    setStoredRole(r);
-    setRoleState(r);
-  }, []);
-
-  const login = useCallback(async (id: string, password: string) => {
-    const r = await loginWithPassword(id, password);
-    setRoleState(r);
-  }, []);
-
-  const logout = useCallback(() => {
-    clearStoredRole();
-    setRoleState("guest");
-  }, []);
-
   return (
-    <AuthContext.Provider value={{ role, loading, login, logout, setRole }}>
+    <AuthContext.Provider value={{ role, setRole, loading }}>
       {children}
     </AuthContext.Provider>
   );
@@ -46,6 +28,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
 }

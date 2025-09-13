@@ -19,7 +19,7 @@ const NAV_ITEMS: NavItem[] = [
   { name: 'Chat', href: '/chat' },
   { name: 'Employee', href: '/employee', userOnly: true },
   { name: 'HR', href: '/hr', hrOnly: true },
-  { name: 'HR Alerts', href: '/hr/alerts', hrOnly: true },
+  { name: 'HR Alerts', href: '/hr/alert', hrOnly: true },
   { name: 'Setting', href: '/setting' },
   // Login/Logout จะเติมแบบไดนามิกด้านล่างตาม role
 ];
