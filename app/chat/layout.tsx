@@ -7,7 +7,7 @@ function ChatLayout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
     return (
         <div className="flex flex-col h-screen bg-gray-100">
-            <header className="bg-white shadow p-4 flex items-center justify-between">
+            <header className="bg-blue-800 text-white shadow p-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     {/* Back button */}
                     <button
@@ -19,7 +19,7 @@ function ChatLayout({ children }: { children: React.ReactNode }) {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <img src="/logo.png" alt="Logo" className="h-8 w-8" />
+                    {/* <img src="/logo.png" alt="Logo" className="h-8 w-8" /> */}
                     <span className="font-bold text-lg">ผู้ช่วย HR พี่จุ๋ม</span>
                 </div>
                 {/* <span className="text-gray-500 text-sm">Powered by LLM</span> */}
