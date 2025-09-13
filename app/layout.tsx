@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <AppProviders>
           {!hideNavbar && <Navbar />}
           <main className={`min-h-screen transition-all duration-300 ${hideNavbar ? '' : 'pt-16'}`}>
-            <div className="p-6">{children}</div>
+            <div className="">{children}</div>
           </main>
         </AppProviders>
       </body>
