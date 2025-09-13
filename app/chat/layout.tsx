@@ -20,7 +20,7 @@ function ChatLayout({ children }: { children: React.ReactNode }) {
                         </svg>
                     </button>
                     {/* <img src="/logo.png" alt="Logo" className="h-8 w-8" /> */}
-                    <span className="font-bold text-lg">ผู้ช่วย HR พี่จุ๋ม</span>
+                    <span className="font-bold text-lg">คุณจุ๋ม ผู้ช่วย HR</span>
                 </div>
                 {/* <span className="text-gray-500 text-sm">Powered by LLM</span> */}
             </header>
