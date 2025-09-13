@@ -22,7 +22,8 @@ function ChatPage() {
 
     const recommendedMessages = [
         "ฉันเหลือวันลาเท่าไหร่",
-        "ขอเอกสารใบลาหน่อย"
+        "ขอเอกสารใบลาหน่อย",
+        "ขอลิงก์ยื่นเอกสาร"
     ];
 
     useEffect(() => {

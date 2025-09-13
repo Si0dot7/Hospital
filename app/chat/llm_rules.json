@@ -4,7 +4,7 @@
         "answer": "นี่คือเอกสารใบลาที่คุณต้องการค่ะ",
         "file": {
             "name": "ใบลา.pdf",
-            "url": "/files/leave-form.pdf"
+            "url": "/samples/license_copy.pdf"
         }
     },
     {
@@ -18,8 +18,8 @@
         "type": "mcp"
     },
     {
-        "question": "ขอลิงก์ HR",
-        "answer": "นี่คือลิงก์สำหรับ HR ที่เกี่ยวข้องค่ะ",
+        "question": "ขอลิงก์ยื่นเอกสาร",
+        "answer": "นี่คือลิงก์สำหรับยื่นเอกสารที่เกี่ยวข้องค่ะ",
         "type": "link",
         "link": {
             "label": "ไปที่หน้าบุคลากร",
