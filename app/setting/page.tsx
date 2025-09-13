@@ -78,7 +78,7 @@ export default function SettingsPage() {
           </div>
 
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-700">อายุ (คำนวณอัตโนมัติ)</label>
+            <label className="mb-1 block text-sm font-medium text-slate-700">อายุ</label>
             <input
               readOnly
               value={Number.isFinite(age) ? age : "-"}
