@@ -1,51 +1,45 @@
-// components/hr/HrTable.tsx
 "use client";
-
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import type { RequestRow } from "@/lib/types";
 
-type Props = {
+export default function HrTable({
+  rows,
+  activeId,
+  onSelectRow,
+}: {
   rows: RequestRow[];
   activeId?: string;
-  onSelectRow: (row: RequestRow) => void;
-};
-
-export default function HrTable({ rows, activeId, onSelectRow }: Props) {
+  onSelectRow: (r: RequestRow) => void;
+}) {
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>เลขที่</TableHead>
-          <TableHead>ประเภท</TableHead>
-          <TableHead>หัวข้อ</TableHead>
-          <TableHead>ผู้ยื่น</TableHead>
-          <TableHead>ยื่นเมื่อ</TableHead>
-          <TableHead>SLA (วัน)</TableHead>
-          <TableHead className="text-right">สถานะ</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {rows.map((r) => (
-          <TableRow
-            key={r.id}
-            className={activeId === r.id ? "bg-blue-50 cursor-pointer" : "cursor-pointer"}
-            onClick={() => onSelectRow(r)}
-          >
-            <TableCell className="font-medium">{r.id}</TableCell>
-            <TableCell>{r.type}</TableCell>
-            <TableCell>{r.title || "-"}</TableCell>
-            <TableCell>{r.owner}</TableCell>
-            <TableCell>{r.submitted}</TableCell>
-            <TableCell>{r.sla}</TableCell>
-            <TableCell className="text-right">
-              <Badge variant={r.status === "เสร็จสิ้น" ? "secondary" : r.status === "ใหม่" ? "default" : "outline"}>
-                {r.status}
-              </Badge>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+    <div className="overflow-auto">
+      <table className="w-full text-sm">
+        <thead className="text-left border-b">
+          <tr>
+            <th className="p-3">เลขที่</th>
+            <th className="p-3">ประเภท</th>
+            <th className="p-3">หัวข้อ</th>
+            <th className="p-3">ผู้ยื่น</th>
+            <th className="p-3">ไฟล์แนบ</th>
+            <th className="p-3 text-right">สถานะ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr
+              key={r.id}
+              className={"border-b hover:bg-gray-50 cursor-pointer " + (activeId === r.id ? "bg-blue-50" : "")}
+              onClick={() => onSelectRow(r)}
+            >
+              <td className="p-3 font-medium">{r.id}</td>
+              <td className="p-3">{r.type}</td>
+              <td className="p-3">{r.title ?? "-"}</td>
+              <td className="p-3">{r.owner}</td>
+              <td className="p-3">{r.attachments?.length ?? 0}</td>
+              <td className="p-3 text-right">{r.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

@@ -14,6 +14,7 @@ export default function HomePage() {
         <Link href="/retired" className="p-6 bg-white rounded-2xl shadow-md text-center hover:shadow-lg">👨‍⚕️ <p className="mt-2 font-semibold">ผู้สูงอายุ</p></Link>
         <Link href="/employee" className="p-6 bg-white rounded-2xl shadow-md text-center hover:shadow-lg">👩‍💼 <p className="mt-2 font-semibold">พนักงานทั่วไป</p></Link>
         <Link href="/hr" className="p-6 bg-white rounded-2xl shadow-md text-center hover:shadow-lg">👩‍💻 <p className="mt-2 font-semibold">เจ้าหน้าที่ HR</p></Link>
+        <Link href="/chat" className="p-6 bg-white rounded-2xl shadow-md text-center hover:shadow-lg">💬 <p className="mt-2 font-semibold">แชท</p></Link>
       </div>
     </div>
   );
