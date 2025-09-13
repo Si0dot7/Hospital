@@ -30,7 +30,7 @@ export default function ChatPage() {
     const [input, setInput] = useState("");
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-    const recommendedMessages = ["ฉันเหลือวันลาเท่าไหร่", "ขอเอกสารใบลาหน่อย", "ขอลิงก์ยื่นเอกสาร"];
+    const recommendedMessages = ["ฉันเหลือวันลาเท่าไหร่", "ขอเอกสารใบลาหน่อย", "ขอลิงก์ส่งเอกสาร"];
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
