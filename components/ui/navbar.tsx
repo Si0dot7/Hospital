@@ -120,7 +120,6 @@ const Navbar: React.FC = () => {
         }`}
       >
         <nav className="py-3 flex flex-col h-full">
-          <div className="px-4 pb-2 text-xs uppercase tracking-wider text-slate-400">Navigation</div>
           <div className="flex-1 space-y-1">
             {NAV_ITEMS.map((item) => (
               <Link
