@@ -14,7 +14,7 @@ type NavItem = {
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { name: 'หน้าหลัก', href: '/main' },
+  { name: 'หน้าหลัก', href: '/' },
   { name: 'บริการ', href: '/services' },
   { name: 'แชท', href: '/chat' },
   { name: 'คำร้องใหม่', href: '/employee', userOnly: true },

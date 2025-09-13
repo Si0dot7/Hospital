@@ -9,21 +9,21 @@ function useSafeFrom() {
   const raw = useSearchParams();
 
   // อ่านครั้งเดียวเป็นสตริงปกติ (กัน Next 15 sync dynamic api)
-  const fromRaw = React.useMemo(() => raw.get('from') || '/main', [raw]);
+  const fromRaw = React.useMemo(() => raw.get('from') || '/', [raw]);
 
   // ทำความสะอาดให้เป็น internal path เท่านั้น
   return React.useMemo(() => {
     try {
       // รองรับกรณีผู้ใช้ส่งเป็น URL เต็ม เข้าทาง dummy origin แล้วดึง path+query ออก
       const url = new URL(fromRaw, 'http://dummy');
-      const p = (url.pathname || '/main') + (url.search || '') + (url.hash || '');
+      const p = (url.pathname || '/') + (url.search || '') + (url.hash || '');
       // อนุญาตแค่ path ภายใน และไม่ใช่ /login เอง
-      if (p.startsWith('/main') && p !== '/login') return p;
-      return '/main';
+      if (p.startsWith('/') && p !== '/login') return p;
+      return '/';
     } catch {
       // กรณี fromRaw ไม่ใช่ URL: ยอมเฉพาะที่ขึ้นต้นด้วย '/' และไม่ใช่ /login
-      if (fromRaw.startsWith('/main') && fromRaw !== '/login') return fromRaw;
-      return '/main';
+      if (fromRaw.startsWith('/') && fromRaw !== '/login') return fromRaw;
+      return '/';
     }
   }, [fromRaw]);
 }
@@ -67,7 +67,7 @@ export default function LoginPage() {
 
       // ใช้ startTransition ให้เนียน และรับประกันเป็น path ภายใน
       startTransition(() => {
-        router.replace(safeFrom || '/main');
+        router.replace(safeFrom || '/');
         // กันกรณี middleware ยังรีเฟรชไม่ทัน: refresh หน้านั้น
         router.refresh();
       });
