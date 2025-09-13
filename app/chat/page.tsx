@@ -22,7 +22,7 @@ type Rule = {
 };
 
 const initialMessages: Message[] = [
-    { id: 1, sender: "llm", text: "สวัสดีค่ะคุณสมเกียรติ มีอะไรให้จุ๋มช่วยคะวันนี้" },
+    { id: 1, sender: "llm", text: "สวัสดีค่ะคุณสมชาย มีอะไรให้จุ๋มช่วยคะวันนี้" },
 ];
 
 export default function ChatPage() {
