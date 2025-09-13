@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
         className={`fixed top-16 left-0 z-50 h-[calc(100vh-4rem)] w-64 bg-slate-900 text-slate-100 border-r border-slate-800 transform transition-transform duration-300 ${open ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <nav className="py-3 flex flex-col h-full">
-          <div className="px-4 pb-2 text-xs uppercase tracking-wider text-slate-400">Navigation</div>
+          
           <div className="flex-1 space-y-1">
             {NAV_ITEMS.map((item) => (
               <Link
