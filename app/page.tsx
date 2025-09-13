@@ -205,7 +205,7 @@ export default function HRPosterPage() {
       {/* ===== HERO ===== */}
       <section className="hero">
         <div className="hero-content">
-          <h3 className="title">คุณ สมพงษ์</h3>
+          <h3 className="title">คุณ สมชาย</h3>
           <h1 className="title">
             ฝ่ายทรัพยากรบุคคล คณะแพทยศาสตร์ศิริราชพยาบาล มหาวิทยาลัยมหิดล
           </h1>
