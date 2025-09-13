@@ -2,6 +2,7 @@
     {
         "question": "ขอเอกสารใบลาหน่อย",
         "answer": "นี่คือเอกสารใบลาที่คุณต้องการค่ะ",
+        "type": "file",
         "file": {
             "name": "ใบลา.pdf",
             "url": "/samples/license_copy.pdf"
