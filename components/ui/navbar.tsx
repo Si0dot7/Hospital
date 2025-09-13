@@ -4,6 +4,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext'; // 👈 ใช้ Context สิทธิ์
+import Logo from '../../public/image/logo2.png'
+import Image from 'next/image';
 
 type NavItem = {
   name: string;
@@ -92,17 +94,17 @@ const Navbar: React.FC = () => {
             >
               {open ? (
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12"  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" />
                 </svg>
               ) : (
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7h16M4 12h16M4 17h16"  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7h16M4 12h16M4 17h16" />
                 </svg>
               )}
             </button>
 
             <Link href={{ pathname: '/' }} className="text-lg font-semibold tracking-wide">
-              HR
+              <Image src={Logo} height={50} alt={'mahidol logo'} />
             </Link>
 
             {/* badge role */}
@@ -150,9 +152,8 @@ const Navbar: React.FC = () => {
 
       {/* Drawer */}
       <aside
-        className={`fixed top-16 left-0 z-50 h-[calc(100vh-4rem)] w-64 bg-slate-900 text-slate-100 border-r border-slate-800 transform transition-transform duration-300 ${
-          open ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed top-16 left-0 z-50 h-[calc(100vh-4rem)] w-64 bg-slate-900 text-slate-100 border-r border-slate-800 transform transition-transform duration-300 ${open ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         <nav className="py-3 flex flex-col h-full">
           <div className="flex-1 space-y-1">
@@ -161,8 +162,8 @@ const Navbar: React.FC = () => {
                 key={item.href}
                 href={{ pathname: item.href }}   // ใช้ UrlObject กัน type error
                 className={`mx-2 flex items-center gap-2 rounded-md px-4 py-2 text-sm transition-colors ${isActive(item.href)
-                    ? 'bg-blue-700 text-white'
-                    : item.isLogout
+                  ? 'bg-blue-700 text-white'
+                  : item.isLogout
                     ? 'text-red-400 hover:bg-red-600 hover:text-white'
                     : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                   }`}
@@ -193,7 +194,7 @@ const Navbar: React.FC = () => {
           pointerEvents: prefsOpen ? 'auto' : 'none'
         }}
       />
-      
+
       {/* Dialog */}
       <div
         role="dialog"
@@ -217,11 +218,11 @@ const Navbar: React.FC = () => {
       >
         <div style={{ padding: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-            <h2 
-              id="prefs-title" 
-              style={{ 
-                fontSize: '16px', 
-                fontWeight: '600', 
+            <h2
+              id="prefs-title"
+              style={{
+                fontSize: '16px',
+                fontWeight: '600',
                 color: '#1e293b',
                 margin: 0,
                 lineHeight: '24px'
@@ -405,7 +406,7 @@ const Navbar: React.FC = () => {
                   Aa
                 </span>
               </button>
-              
+
               <button
                 onClick={() => setTheme('sepia')}
                 style={{
@@ -432,7 +433,7 @@ const Navbar: React.FC = () => {
                   Aa
                 </span>
               </button>
-              
+
               <button
                 onClick={() => setTheme('dark')}
                 style={{
