@@ -150,7 +150,7 @@ export default function ChatPage() {
                         id: getNextId(msgs),
                         sender: "llm",
                         text: llmResponse,
-                        link: { label: "จองเวลาติดต่อเจ้าหน้าที่", url: "/hr" },
+                        link: { label: "จองเวลาติดต่อเจ้าหน้าที่", url: "/booking" },
                     },
                 ]);
                 if (shouldAttachSupport) pushCrisisCard(false);
