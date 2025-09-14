@@ -116,7 +116,7 @@ export default function ChatPage() {
             setTimeout(() => {
                 setMessages((msgs) => [
                     ...msgs,
-                    { id: getNextId(msgs), sender: "llm", text: "กำลังหาข้อมูลที่เกี่ยวข้อง", loading: true },
+                    { id: getNextId(msgs), sender: "llm", text: "กำลังหาข้อมูลที่เกี่ยวข้องในฐานข้อมูล", loading: true },
                 ]);
                 setTimeout(() => {
                     setMessages((msgs) => {
@@ -124,8 +124,8 @@ export default function ChatPage() {
                         return [...filtered, { id: getNextId(filtered), sender: "llm", text: llmResponse }];
                     });
                     if (shouldAttachSupport) pushCrisisCard(false);
-                }, 1200);
-            }, 800);
+                }, 2000);
+            }, 1000);
         } else if (type === "link" && link) {
             // ✅ สร้างฟองเดียว: มีทั้งข้อความกำกับ + ลิงก์
             setTimeout(() => {
